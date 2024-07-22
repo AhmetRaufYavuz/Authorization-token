@@ -2,6 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { useContext } from 'react';
+import {AuthContext} from "../contexts/AuthContext";
 
 function AddFriend() {
   const {
@@ -10,7 +12,7 @@ function AddFriend() {
     formState: { errors },
   } = useForm({ mode: 'onChange' });
 
-  const token = 'TODO: token loginden gelecek.';
+  const token = useContext(AuthContext)?.token;
 
   const history = useHistory();
   const addFriendSubmit = (data) => {
